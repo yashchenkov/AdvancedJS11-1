@@ -4,15 +4,16 @@ export default class Team {
   	this.indexOfCharacters = -1;
   }
   [Symbol.iterator]() {
-  	  return {
-  	    next() {
-  	      if(this.indexOfCharacters < this.characters.length - 1) {
-  	        return {
-  	      	  done: false,
-  	      	  value: this.characters[this.indexOfCharacters++]
-  	        };
+     return {
+       current: this.indexOfCharacters,
+       last: this.characters,
+  	   next() {
+  	     if(this.current < this.last.length - 1) {
+  	       return {
+  	      	 done: false,
+  	      	 value: this.last[current++]
+  	       };
   	      }
-
   	      return {
   	        done: true
   	      };
